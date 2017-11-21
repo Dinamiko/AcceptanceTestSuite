@@ -1,0 +1,46 @@
+version: '2'
+
+services:
+  codecept:
+      image: vicheus/codeception
+      depends_on:
+        - chrome
+        - mysql
+      volumes:
+        - './tests:/project/tests'
+        - './codeception.yml:/project/codeception.yml'
+  chrome:
+      image: 'selenium/standalone-chrome-debug'
+      ports:
+        - '5900'
+  wordpress:
+    build:
+      context: .
+    image: wp-test:latest
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+    volumes:
+      - ./wordpress-data:/var/www/html
+  mysql:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    volumes:
+      - mysql-data:/var/lib/mysql
+  phpmyadmin:
+    image: nazarpc/phpmyadmin
+    links:
+      - mysql:mysql
+    ports:
+      - 1234:80
+volumes:
+  wordpress: {}
+  mysql-data: {}

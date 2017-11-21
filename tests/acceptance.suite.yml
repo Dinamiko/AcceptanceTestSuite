@@ -1,0 +1,26 @@
+# Codeception Test Suite Configuration
+
+class_name: AcceptanceTester
+modules:
+    enabled:
+        - WebDriver
+        - Asserts
+        - Helper\Acceptance
+        - Db
+    config:
+        WebDriver:
+            host: chrome
+            #url: http://localhost:8000
+            url: http://192.168.99.100
+            browser: chrome
+            port: 4444
+            window_size: 1024x768
+            restart: true
+        Db:
+            dsn: 'mysql:host=mysql:3306;dbname=wordpress'
+            user: 'wordpress'
+            password: 'wordpress'
+            dump: 'tests/_data/dump.sql'
+            populate: true
+            cleanup: true
+            reconnect: true
