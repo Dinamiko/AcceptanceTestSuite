@@ -10,7 +10,7 @@ modules:
     config:
         WebDriver:
             host: chrome
-            #url: http://localhost:8000
+            #url: http://localhost
             url: http://192.168.99.100
             browser: chrome
             port: 4444
