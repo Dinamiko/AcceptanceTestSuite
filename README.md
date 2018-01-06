@@ -24,7 +24,7 @@ Create it via phpMyAdmin accessible on port 1234, visit [http://localhost:1234](
 Or run this command directly inside the docker container:
 `$ docker exec CONTAINER_ID /usr/bin/mysqldump -u root --password=wordpress wordpress > dump.sql`
 
-### Setup test/acceptance.suite.yml
+### Setup tests/acceptance.suite.yml
 Add your IP address to WebDriver `url` parameter. This same IP should be used in WordPress `siteurl` and `home` options.
 
 ### Run Tests
