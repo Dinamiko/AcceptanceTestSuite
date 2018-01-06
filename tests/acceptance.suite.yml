@@ -10,8 +10,8 @@ modules:
     config:
         WebDriver:
             host: chrome
-            #url: http://localhost
-            url: http://192.168.99.100
+            # Use an IP like 192.168.1.2 instead of localhost, use this same IP in WordPress siteurl and home options.
+            url: http://localhost
             browser: chrome
             port: 4444
             window_size: 1024x768
